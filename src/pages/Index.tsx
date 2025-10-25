@@ -18,14 +18,14 @@ const Index = () => {
                   Everyone's<br />Favorite DEX
                 </h1>
                 <p className="text-muted-foreground text-xl">
-                  Trade Crypto Instantly Across 3+ Chains
+                  Trade Crypto Instantly on Ethereum & BNB Chain
                 </p>
               </div>
-              <SwapCard selectedChain={selectedChain} onChainSelect={setSelectedChain} />
+              <SwapCard selectedChain={selectedChain} />
             </>
           ) : (
             <div className="md:col-span-2 mx-auto">
-              <SwapCard selectedChain={selectedChain} onChainSelect={setSelectedChain} />
+              <SwapCard selectedChain={selectedChain} />
             </div>
           )}
         </div>

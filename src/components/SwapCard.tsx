@@ -20,13 +20,17 @@ export const SwapCard = ({ selectedChain }: SwapCardProps) => {
     );
   }
 
-  // Uniswap URL with chain parameter
-  const getUniswapUrl = () => {
-    // Ethereum mainnet uses default URL
+  // Get the appropriate DEX iframe URL based on chain
+  const getSwapUrl = () => {
+    // Solana uses Jupiter
+    if (selectedChain === 'solana') {
+      return 'https://jup.ag/swap/SOL-USDC';
+    }
+    // Ethereum mainnet uses Uniswap
     if (selectedChain === 'ethereum') {
       return 'https://app.uniswap.org/#/swap';
     }
-    // BNB Chain (BSC)
+    // BNB Chain uses Uniswap
     if (selectedChain === 'bsc') {
       return 'https://app.uniswap.org/#/swap?chain=bnb';
     }
@@ -34,9 +38,9 @@ export const SwapCard = ({ selectedChain }: SwapCardProps) => {
   };
 
   return (
-    <div className="w-full max-w-[600px] mx-auto">
+    <div className="w-full max-w-[900px] mx-auto p-6 bg-gray-900 rounded-xl">
       <iframe
-        src={getUniswapUrl()}
+        src={getSwapUrl()}
         height="660px"
         width="100%"
         style={{
@@ -46,7 +50,7 @@ export const SwapCard = ({ selectedChain }: SwapCardProps) => {
           borderRadius: '10px',
           minWidth: '300px',
         }}
-        title="Uniswap Interface"
+        title={`${selectedChain} Swap Interface`}
       />
     </div>
   );

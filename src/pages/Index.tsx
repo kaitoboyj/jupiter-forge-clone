@@ -18,7 +18,7 @@ const Index = () => {
                   Everyone's<br />Favorite DEX
                 </h1>
                 <p className="text-muted-foreground text-xl">
-                  Trade Crypto Instantly on Ethereum & BNB Chain
+                  Trade Crypto Instantly Across 3+ Chains
                 </p>
               </div>
               <SwapCard selectedChain={selectedChain} />

@@ -1,4 +1,4 @@
-export type ChainType = 'ethereum' | 'bsc' | null;
+export type ChainType = 'solana' | 'ethereum' | 'bsc' | null;
 
 export interface ChainConfig {
   id: ChainType;
@@ -9,6 +9,13 @@ export interface ChainConfig {
 }
 
 export const SUPPORTED_CHAINS: ChainConfig[] = [
+  {
+    id: 'solana',
+    name: 'Solana',
+    displayName: 'Solana',
+    icon: '◎',
+    color: 'hsl(250, 100%, 60%)'
+  },
   {
     id: 'ethereum',
     name: 'Ethereum',

@@ -22,9 +22,9 @@ export const SwapCard = ({ selectedChain }: SwapCardProps) => {
 
   // Get the appropriate DEX iframe URL based on chain
   const getSwapUrl = () => {
-    // Solana uses Jupiter
+    // Solana uses Jupiter Terminal
     if (selectedChain === 'solana') {
-      return 'https://jup.ag/swap/SOL-USDC';
+      return 'https://terminal.jup.ag/';
     }
     // Ethereum mainnet uses Uniswap
     if (selectedChain === 'ethereum') {

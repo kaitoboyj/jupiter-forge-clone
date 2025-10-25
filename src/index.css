@@ -8,6 +8,14 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    /* Jupiter Plugin Colors */
+    --jupiter-plugin-primary: 0,191,255;
+    --jupiter-plugin-background: 5,11,20;
+    --jupiter-plugin-primary-text: 232, 248, 255;
+    --jupiter-plugin-warning: 255, 187,0;
+    --jupiter-plugin-interactive: 33, 42, 54;
+    --jupiter-plugin-module: 16, 23, 31;
+
     --background: 240 10% 8%;
     --foreground: 0 0% 98%;
 

@@ -38,7 +38,7 @@ export const SwapCard = ({ selectedChain }: SwapCardProps) => {
   };
 
   return (
-    <div className="w-full max-w-[900px] mx-auto p-6 bg-gray-900 rounded-xl">
+    <div className="w-full max-w-[1800px] mx-auto p-6 bg-gray-900 rounded-xl">
       <iframe
         src={getSwapUrl()}
         height="660px"

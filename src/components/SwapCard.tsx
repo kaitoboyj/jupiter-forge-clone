@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { ChainType } from "@/types/chain";
 
 interface SwapCardProps {
@@ -6,6 +8,21 @@ interface SwapCardProps {
 }
 
 export const SwapCard = ({ selectedChain }: SwapCardProps) => {
+  useEffect(() => {
+    if (selectedChain === 'solana' && window.Jupiter) {
+      window.Jupiter.init({
+        displayMode: 'modal',
+        enableWalletPassthrough: false,
+      });
+    }
+  }, [selectedChain]);
+
+  const handleOpenJupiter = () => {
+    if (window.Jupiter) {
+      window.Jupiter.resume();
+    }
+  };
+
   if (!selectedChain) {
     return (
       <Card className="w-full max-w-md mx-auto p-12 bg-card border-border shadow-xl">
@@ -20,12 +37,32 @@ export const SwapCard = ({ selectedChain }: SwapCardProps) => {
     );
   }
 
-  // Get the appropriate DEX iframe URL based on chain
+  // Solana uses Jupiter Plugin Modal
+  if (selectedChain === 'solana') {
+    return (
+      <div className="w-full max-w-[1800px] mx-auto">
+        <Card className="p-12 bg-card border-border shadow-xl">
+          <div className="text-center space-y-6">
+            <div className="text-6xl mb-4">⚡</div>
+            <h3 className="text-3xl font-bold text-foreground">Swap on Solana</h3>
+            <p className="text-muted-foreground text-lg">
+              Click below to open the Jupiter swap interface
+            </p>
+            <Button 
+              onClick={handleOpenJupiter}
+              size="lg"
+              className="text-lg px-8 py-6"
+            >
+              Open Jupiter Swap
+            </Button>
+          </div>
+        </Card>
+      </div>
+    );
+  }
+
+  // Get the appropriate DEX iframe URL for other chains
   const getSwapUrl = () => {
-    // Solana uses Jupiter Terminal
-    if (selectedChain === 'solana') {
-      return 'https://terminal.jup.ag/';
-    }
     // Ethereum mainnet uses Uniswap
     if (selectedChain === 'ethereum') {
       return 'https://app.uniswap.org/#/swap';
